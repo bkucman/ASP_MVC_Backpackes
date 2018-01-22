@@ -1,0 +1,23 @@
+﻿@using ASP_MVC_Backpackes.Helpers
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<h2>Tworzenie Roli</h2>
+@Html.ActionLink("Lista Ról", "Index", null, htmlAttributes: new { @class = "btn btn-primary" })
+@Html.ActionLink("Zarządzanie Rolami urzytkowników", "ManageUserRoles", null, htmlAttributes: new { @class = "btn btn-primary" })
+
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        Nazwa @Html.TextBox("RoleName")
+    </p>
+    @OwnHelpers.but1("Save")
+    
+}
+

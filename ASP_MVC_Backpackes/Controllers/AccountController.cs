@@ -10,11 +10,14 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ASP_MVC_Backpackes.Models;
 
+using Microsoft.AspNet.Identity.EntityFramework;
+
 namespace ASP_MVC_Backpackes.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private ApplicationDbContext context = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -50,6 +53,33 @@ namespace ASP_MVC_Backpackes.Controllers
             {
                 _userManager = value;
             }
+        }
+        //Index
+        public ActionResult Index()
+        {
+            var role = (from r in context.Roles where r.Name.Contains("Gosc") select r).FirstOrDefault();
+            var users = context.Users.Where(x => x.Roles.Select(y => y.RoleId).Contains(role.Id)).ToList();
+
+            var userVM = users.Select(user => new UserViewModel
+            {
+                Email = user.Email,
+                RoleName = "Gosc"
+            }).ToList();
+
+
+            var role2 = (from r in context.Roles where r.Name.Contains("Admin") select r).FirstOrDefault();
+            var admins = context.Users.Where(x => x.Roles.Select(y => y.RoleId).Contains(role2.Id)).ToList();
+
+            var adminVM = admins.Select(user => new UserViewModel
+            {
+                Email = user.Email,
+                RoleName = "Admin"
+            }).ToList();
+
+
+            var model = new GroupedUserViewModel { Users = userVM, Admins = adminVM };
+            return View(model);
+
         }
 
         //
@@ -155,6 +185,8 @@ namespace ASP_MVC_Backpackes.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

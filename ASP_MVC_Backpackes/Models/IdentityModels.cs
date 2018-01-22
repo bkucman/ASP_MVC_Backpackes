@@ -20,6 +20,9 @@ namespace ASP_MVC_Backpackes.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Manufacturer> Manufacturers { get; set; }
+        public DbSet<Backpack> Backpacks { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

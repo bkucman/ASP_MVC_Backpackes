@@ -1,0 +1,12 @@
+﻿@if (ViewBag.RolesForThisUser != null)
+{
+    <div>
+        <h3>List ról</h3>
+        <ol>
+            @foreach (string s in ViewBag.RolesForThisUser)
+            {
+                <li>@s</li>
+            }
+        </ol>
+    </div>
+}

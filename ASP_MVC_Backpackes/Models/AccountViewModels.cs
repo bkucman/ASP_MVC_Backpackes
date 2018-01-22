@@ -3,6 +3,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ASP_MVC_Backpackes.Models
 {
+    public class GroupedUserViewModel
+    {
+        public List<UserViewModel> Users { get; set; }
+        public List<UserViewModel> Admins { get; set; }
+    }
+    public class UserViewModel
+    {
+        public string Username { get; set; }
+        public string Email { get; set; }
+        public string RoleName { get; set; }
+    }
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -55,10 +67,10 @@ namespace ASP_MVC_Backpackes.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Hasło")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Zapaminiętaj mnie?")]
         public bool RememberMe { get; set; }
     }
 

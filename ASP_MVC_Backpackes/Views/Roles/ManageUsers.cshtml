@@ -1,0 +1,73 @@
+﻿@using ASP_MVC_Backpackes.Helpers
+@{
+    ViewBag.Title = "ManageUserRoles";
+}
+<div>
+    <h2>Zarządanie Rolami</h2>
+    @Html.ActionLink("Lista Ról", "Index", null, htmlAttributes: new { @class = "btn btn-primary" })
+    @Html.ActionLink("Utwórz rolę", "Create", null, htmlAttributes: new { @class = "btn btn-primary" })
+    @Html.ActionLink("Nowy formularz", "ManageUserRoles", null, htmlAttributes: new { @class = "btn btn-primary" })
+    <hr />
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Nadaj rolę użytkownikowi</h3>
+
+            @using (Html.BeginForm("RoleAddToUser", "Roles"))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <p>
+
+                    Użytkownik @Html.DropDownList("UserName", (IEnumerable<SelectListItem>) ViewBag.Users, "Wybierz", new {@class = "form-control"})
+
+                    Rola @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>) ViewBag.Roles, "Wybierz", new {@class = "form-control"})
+
+                </p>
+
+                @OwnHelpers.but1("Save")
+            }
+            
+        </div>
+        <div class="col-sm-4">
+            <h3>Sprawdź role użytkownika</h3>
+            @using (Html.BeginForm("GetRoles", "Roles"))
+            {
+                @Html.AntiForgeryToken()
+                <p>
+                    Użytkownik @Html.DropDownList("UserName", (IEnumerable<SelectListItem>) ViewBag.Users, "Wybierz", new {@class = "form-control"})
+                    <p></p>
+                    
+                     @OwnHelpers.but1("Check")
+                </p>
+            }
+
+            @Html.Partial("_some")
+
+            
+        </div>
+        <div class="col-sm-4">
+            <h3>Odbierz Rolę</h3>
+
+            @using (Html.BeginForm("DeleteRoleForUser", "Roles"))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <p>
+                    Użytkownik @Html.DropDownList("UserName", (IEnumerable<SelectListItem>) ViewBag.Users, "Wybierz", new {@class = "form-control"})
+                    Rola @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>) ViewBag.Roles, "Wybierz", new {@class = "form-control"})
+
+                </p>
+
+                
+                @OwnHelpers.but1("Odbierz")
+            }
+        </div>
+    </div>
+</div>
+
+
+

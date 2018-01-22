@@ -1,0 +1,21 @@
+﻿@model ASP_MVC_Backpackes.Models.GroupedUserViewModel
+<div class="row">
+    <h4>Admini</h4>
+    @foreach (var usera in Model.Admins)
+    {
+        <p>
+            <strong>
+                @usera.Email<br />
+            </strong>
+        </p>
+    }
+    <h4>Goście</h4>
+    @foreach (var user in Model.Users)
+    {
+        <p>
+            <strong>
+                @user.Email<br/>
+            </strong>
+        </p>
+    }
+</div>
