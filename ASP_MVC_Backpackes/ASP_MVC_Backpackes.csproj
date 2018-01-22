@@ -230,6 +230,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Validators\IsNIP.cs" />
+    <Compile Include="Validators\IsREGON.cs" />
     <Compile Include="ViewModel\BackpackFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

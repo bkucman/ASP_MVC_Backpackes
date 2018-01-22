@@ -24,10 +24,11 @@ namespace ASP_MVC_Backpackes.Models
 
         [Required(ErrorMessage = "Pole jest wymagane.")]
         [IsNIP]
-        [Remote("IsNIPExist","Manufacturers", AdditionalFields = "Name", ErrorMessage = "NIP już istnieje w bazie")]
+        //[Remote("IsNIPExist","Manufacturers", AdditionalFields = "Name", ErrorMessage = "NIP już istnieje w bazie")]
         public string NIP { get; set; }
 
         [Required(ErrorMessage = "Pole jest wymagane.")]
+        [IsREGON]
         public string REGON { get; set; }
 
 
