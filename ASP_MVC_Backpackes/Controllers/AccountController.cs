@@ -80,7 +80,7 @@ namespace ASP_MVC_Backpackes.Controllers
 
             var other = context.Users.OrderBy(x=> x.Email).ToList();
             var xx = other.Except(admins);
-            xx =xx.Except(users);
+            xx = xx.Except(users);
 
             var otherVM = xx.Select(user => new UserViewModel()
             {
@@ -88,9 +88,8 @@ namespace ASP_MVC_Backpackes.Controllers
                 RoleName = "Pozostały"
             }).ToList();
 
-            var model = new GroupedUserViewModel { Users = userVM, Admins = adminVM, Other = otherVM  };
+            var model = new GroupedUserViewModel { Users = userVM, Admins = adminVM, Other = otherVM };
             return View(model);
-
         }
 
         //
