@@ -18,4 +18,13 @@
             </strong>
         </p>
     }
+    <h4>Pozostali</h4>
+    @foreach (var usero in Model.Other)
+    {
+        <p>
+            <strong>
+                @usero.Email<br/>
+            </strong>
+        </p>
+    }
 </div>

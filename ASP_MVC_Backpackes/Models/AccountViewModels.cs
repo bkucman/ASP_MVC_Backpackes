@@ -7,6 +7,7 @@ namespace ASP_MVC_Backpackes.Models
     {
         public List<UserViewModel> Users { get; set; }
         public List<UserViewModel> Admins { get; set; }
+        public List<UserViewModel> Other { get; set; }
     }
     public class UserViewModel
     {
@@ -45,7 +46,7 @@ namespace ASP_MVC_Backpackes.Models
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "Zapamiętać ?")]
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
@@ -84,11 +85,11 @@ namespace ASP_MVC_Backpackes.Models
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Hasło")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Potwierdź hasło")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
@@ -103,11 +104,11 @@ namespace ASP_MVC_Backpackes.Models
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Hasło")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Potwierdź hasło")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 

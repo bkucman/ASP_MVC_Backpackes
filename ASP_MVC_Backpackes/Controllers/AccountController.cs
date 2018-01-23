@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -58,7 +59,8 @@ namespace ASP_MVC_Backpackes.Controllers
         public ActionResult Index()
         {
             var role = (from r in context.Roles where r.Name.Contains("Gosc") select r).FirstOrDefault();
-            var users = context.Users.Where(x => x.Roles.Select(y => y.RoleId).Contains(role.Id)).ToList();
+            
+            var users = context.Users.Where(x => x.Roles.Select(y => y.RoleId).Contains(role.Id)).OrderBy(x=> x.Email).ToList();
 
             var userVM = users.Select(user => new UserViewModel
             {
@@ -68,7 +70,7 @@ namespace ASP_MVC_Backpackes.Controllers
 
 
             var role2 = (from r in context.Roles where r.Name.Contains("Admin") select r).FirstOrDefault();
-            var admins = context.Users.Where(x => x.Roles.Select(y => y.RoleId).Contains(role2.Id)).ToList();
+            var admins = context.Users.Where(x => x.Roles.Select(y => y.RoleId).Contains(role2.Id)).OrderBy(x=> x.Email).ToList();
 
             var adminVM = admins.Select(user => new UserViewModel
             {
@@ -76,8 +78,17 @@ namespace ASP_MVC_Backpackes.Controllers
                 RoleName = "Admin"
             }).ToList();
 
+            var other = context.Users.OrderBy(x=> x.Email).ToList();
+            var xx = other.Except(admins);
+            xx =xx.Except(users);
 
-            var model = new GroupedUserViewModel { Users = userVM, Admins = adminVM };
+            var otherVM = xx.Select(user => new UserViewModel()
+            {
+                Email = user.Email,
+                RoleName = "Pozostały"
+            }).ToList();
+
+            var model = new GroupedUserViewModel { Users = userVM, Admins = adminVM, Other = otherVM  };
             return View(model);
 
         }

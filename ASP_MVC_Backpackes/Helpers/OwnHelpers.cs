@@ -7,12 +7,7 @@ using System.Web.WebPages.Razor.Configuration;
 namespace ASP_MVC_Backpackes.Helpers
 {
     public static class OwnHelpers { 
-        public static string DDList(string line,string name)
-        {
-            return String.Format("\"" + name + "\", (IEnumerable<SelectListItem>)ViewBag." + line +
-                                 ",\"Wybierz\", new {{ @class = \"form - control\" }}");
-            //Rolad @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Wybierz", new { @class = "form-control" })
-        }
+
 
 
         public static HtmlString but1(string action)
