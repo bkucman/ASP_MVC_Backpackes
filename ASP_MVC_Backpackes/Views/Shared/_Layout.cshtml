@@ -3,27 +3,34 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/faviconB.ico?v=1" rel="shortcut icon" type="image/x-icon"/>
     <title>@ViewBag.Title - Backpacks</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top ">
     <div class="container">
         <div class="navbar-header">
+            
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Backpacks", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse ">
             <ul class="nav navbar-nav">
+                <a class="navbar-brand" href="/Home/Index">
+                    <img src="/faviconB.ico" width="25" height="25" class="d-inline-block align-top" alt="">
+                
+                </a>
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("Plecaki","Index", "Backpacks")</li>
-                <li>@Html.ActionLink("Producent","Index","Manufacturers")</li>
+                <li>@Html.ActionLink("Plecaki", "Index", "Backpacks")</li>
+                <li>@Html.ActionLink("Producent", "Index", "Manufacturers")</li>
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
@@ -34,7 +41,19 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Backpacks</p>
+           
+                <div class="navbar navbar-inverse">
+                    <ul class="nav navbar-nav">
+                        
+                        <li>@Html.ActionLink("Info", "About", "Home")</li>
+                        <li>@Html.ActionLink("Kontak", "Contact", "Home")</li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <p class="nav navbar-brand">&copy; @DateTime.Now.Year - Backpacks</p>
+                    </ul>
+
+                </div>
         </footer>
     </div>
 

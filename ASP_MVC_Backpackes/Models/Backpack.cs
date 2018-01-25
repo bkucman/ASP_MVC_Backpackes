@@ -17,7 +17,6 @@ namespace ASP_MVC_Backpackes.Models
 
         [Required(ErrorMessage = "Pole jest wymagane.")]
         [Display(Name = "Pojemność")]
-        
         public decimal Capacity { get; set; }
 
         [Display(Name = "Cena")]
