@@ -8,11 +8,11 @@
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
     <h4>Możliwa tylko zmiana hasła</h4>
-    <hr />
+    <hr style="border-top: 3px double #FF3C9C ">
     <dl class="dl-horizontal">
         <dt>Hasło:</dt>
         <dd>
-            [
+            
             @if (Model.HasPassword)
             {
                 @Html.ActionLink("Zmień hasło", "ChangePassword")
@@ -21,7 +21,8 @@
             {
                 @Html.ActionLink("Utwórz", "SetPassword")
             }
-            ]
+            
         </dd>
     </dl>
+    <hr style="border-top: 3px double #FF3C9C ">
 </div>
