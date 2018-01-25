@@ -1,11 +1,13 @@
 ﻿@model ASP_MVC_Backpackes.Models.Backpack
+@using ASP_MVC_Backpackes.Helpers
 <tr>
     <td>
        
         @Html.DisplayFor(model => model.Name)
     </td>
     <td>
-        @Html.DisplayFor(model => model.Capacity)
+        
+        @OwnHelpers.Capacity(Model.Capacity)
     </td>
     <td>
         @Html.DisplayFor(model => model.Price)

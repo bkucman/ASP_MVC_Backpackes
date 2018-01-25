@@ -11,7 +11,6 @@ namespace ASP_MVC_Backpackes.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Pole jest wymagane.")]
-        [RegularExpression(@"^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*")]
         [Display(Name = "Nazwa")]
         public string Name { get; set; }
 

@@ -1,5 +1,5 @@
 ﻿@model ASP_MVC_Backpackes.Models.Backpack
-
+@using ASP_MVC_Backpackes.Helpers
 @{
     ViewBag.Title = "Plecak - Utwórz";
 }
@@ -59,7 +59,8 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                
+                @OwnHelpers.but1("Create")
             </div>
         </div>
     </div>

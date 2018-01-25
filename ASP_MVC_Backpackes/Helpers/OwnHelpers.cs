@@ -27,8 +27,18 @@ namespace ASP_MVC_Backpackes.Helpers
             {
                 return  new HtmlString("<input type=\"submit\" class=\"btn btn-danger\" value=\"Odbierz\"/>");
             }
+            else if (action == "Create")
+            {
+                return new HtmlString("<input type=\"submit\" class=\"btn btn-priamry\" value=\"Utwórz\"/>");
+            }
             return new HtmlString("<input type=\"submit\" class=\"btn btn-primary\" value=\"Klik\" />");
 
+        }
+
+        public static string Capacity(decimal x)
+        {
+          
+          return String.Format(x+" L");
         }
     }
 }
